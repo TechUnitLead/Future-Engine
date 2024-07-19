@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROUGE</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        function main_info()
+{
+    const img = localStorage.getItem('img');
+    const name = localStorage.getItem('name');
+
+    const basic_info = document.getElementById('basic_info');
+   
+                    
+                    
+                    const imageElement = document.createElement('img');
+                     imageElement.setAttribute("class", "image");
+                     imageElement.src = img;
+                     basic_info.appendChild(imageElement);
+
+                     const name_info=document.createElement('h1');
+                     name_info.textContent=name;
+                    basic_info.appendChild(name_info)
+                     
+
+}
+document.addEventListener('DOMContentLoaded', main_info);
+    </script>
+
+</head>
+<body>
+    <div class="mainbody">
+    <div id="basic_info">
+        </table>
+        
+    </div>
+    <div class="container">
+        <button onclick="googleSearch()">News</Details></button>
+        <button onclick="info()">About company</button>
+        <div id="info-section" class="info-section"></div>
+    </div>
+</div>
+    
