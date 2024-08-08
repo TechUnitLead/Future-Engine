@@ -17,6 +17,7 @@
            .image {
             max-height: 150px;
             max-width: 150px;
+            padding: 10px;
            }
            #table{
             margin-left: auto;  
@@ -25,21 +26,55 @@
             width: 700px;  
            text-align: center;  
            font-size: 20px; 
+           padding: 10px;
             
 
            }
-           
+           #q{
+            margin-bottom: 50px;
+            border: 2px solid #000; 
+            border-radius: 10px; 
+            padding: 20px;
+
+
+           }
+           #p{
+            margin-bottom: 50px;
+            border: 2px solid #000; 
+            border-radius: 10px; 
+            padding: 20px;
+
+
+           }
+           .transparent-button{
+            background-color: transparent;
+            border-color: transparent;
+            font-size: 30px;
+           }
+           .transparent-button:hover {
+            background-color: red;
+            visibility: 80%;
+           }
+           #submit_button{
+            font-size: 30px;
+            padding-bottom: 8px;
+           }
+
+    
+
+
     </style>
    
 </head>
 <body>
-    <h1>search comapny</h1>
+    <h1>Search comapny</h1>
 
    
     <div id="search-box">
         
-        <input type="text" id="q" name="q" size="40" placeholder="Search..." >
-        <button type="submit" onclick="Search()">Search</button>
+        <input type="text" id="q" name="q" size="40" placeholder="company name" >
+        <input type="text" id="p" name="p" size="40" placeholder="founder name">
+        <button type="submit" id="submit_button" onclick="Search()">Search</button>
     
     </div>
 

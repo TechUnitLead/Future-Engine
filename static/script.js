@@ -2,6 +2,7 @@
 function Search()
 {
     const query = document.getElementById('q').value;
+    const founder = document.getElementById('p').value;
     if(!query)
     {
         alert("search box cant be empty");
@@ -56,7 +57,7 @@ function Search()
                      const button=document.createElement('button');
                      button.setAttribute('class','transparent-button');
                      button.textContent=`${companyInfo.name}`;
-                     button.setAttribute('onclick', `search_company('${companyInfo.id}','${companyInfo.name}','${companyInfo.image_id}')`);
+                     button.setAttribute('onclick', `search_company('${companyInfo.id}','${companyInfo.name}','${companyInfo.image_id}','${founder}')`);
                      column1.appendChild(button);
                      
                      
@@ -120,13 +121,41 @@ function info()
     
 }
 
-function search_company(companyId,name,img)
+function search_company(companyId,name,img,founder)
 {
     localStorage.setItem('companyId', companyId);
     localStorage.setItem('img', img);
+    localStorage.setItem('founder', founder);
     
     localStorage.setItem('name', name);
     window.location.replace("http://127.0.0.1:5000/main");
 
 
+}
+function googleSearch_founder() {
+    const query = localStorage.getItem('founder');
+
+    const element = document.getElementById('info-section');
+    element.innerHTML = ''; 
+    var cx = 'c18987a28bece4f56';
+    var apiKey = 'AIzaSyD2I5KDxtZj9qylQNVq15eeAgMyAA-HRg0'; 
+    var url = 'https://www.googleapis.com/customsearch/v1?q=' + query + '&key=' + apiKey + '&cx=' + cx;
+
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            data.items.forEach(item => {
+                var title = item.title;
+                var link = item.link;
+                var snippet = item.snippet;
+
+              
+                var resultElement = document.createElement('div');
+                resultElement.innerHTML = '<h3><a href="' + link + '">' + title + '</a></h3><p>' + snippet + '</p>';
+                element.appendChild(resultElement);
+            });
+        })
+        .catch(error => console.error('Error fetching search results:', error));
+    
 }

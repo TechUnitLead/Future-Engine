@@ -14,20 +14,50 @@
     const basic_info = document.getElementById('basic_info');
    
                     
-                    
+                    const table=document.createElement('table');
+                    table.id="table";
+                    const tr=document.createElement('tr');
+                    const td1 =document.createElement('td');
                     const imageElement = document.createElement('img');
-                     imageElement.setAttribute("class", "image");
+                     imageElement.setAttribute("id", "company_image");
                      imageElement.src = img;
-                     basic_info.appendChild(imageElement);
-
+                     td1.appendChild(imageElement);
+                     const td2=document.createElement('td');
                      const name_info=document.createElement('h1');
                      name_info.textContent=name;
-                    basic_info.appendChild(name_info)
+                    td2.appendChild(name_info);
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    table.appendChild(tr);
+                    basic_info.appendChild(table);
                      
 
 }
 document.addEventListener('DOMContentLoaded', main_info);
     </script>
+    <style>
+        #company_image{
+            max-width: 200px;
+            max-height: 200px;
+            margin-right: 20px;
+            
+            
+        }
+        #table{
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+        .section-button{
+            background-color: antiquewhite;
+            font-size: medium;
+            margin-left: 5px;
+        }
+        .container{
+            margin-left: 50px;
+            
+            
+        }
+    </style>
 
 </head>
 <body>
@@ -37,8 +67,10 @@ document.addEventListener('DOMContentLoaded', main_info);
         
     </div>
     <div class="container">
-        <button onclick="googleSearch()">News</Details></button>
-        <button onclick="info()">About company</button>
+        <button class="section-button" onclick="googleSearch()">News</Details></button>
+        <button class="section-button" onclick="info()">About company</button>
+        <button class="section-button" onclick="googleSearch_founder()">founders</button>
+        <button class="section-button" onclick="googleSearch_founder()">others</button>
         <div id="info-section" class="info-section"></div>
     </div>
 </div>
