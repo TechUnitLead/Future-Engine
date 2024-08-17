@@ -3,75 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROUGE</title>
+    <title>FUTURE ENGINE</title>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script>
-        function main_info()
-{
-    const img = localStorage.getItem('img');
-    const name = localStorage.getItem('name');
+        function main_info() {
+            const img = localStorage.getItem('img');
+            const name = localStorage.getItem('name');
 
-    const basic_info = document.getElementById('basic_info');
+            const basic_info = document.getElementById('basic_info');
    
-                    
-                    const table=document.createElement('table');
-                    table.id="table";
-                    const tr=document.createElement('tr');
-                    const td1 =document.createElement('td');
-                    const imageElement = document.createElement('img');
-                     imageElement.setAttribute("id", "company_image");
-                     imageElement.src = img;
-                     td1.appendChild(imageElement);
-                     const td2=document.createElement('td');
-                     const name_info=document.createElement('h1');
-                     name_info.textContent=name;
-                    td2.appendChild(name_info);
-                    tr.appendChild(td1);
-                    tr.appendChild(td2);
-                    table.appendChild(tr);
-                    basic_info.appendChild(table);
-                     
-
-}
-document.addEventListener('DOMContentLoaded', main_info);
+            const table = document.createElement('table');
+            table.id = "table";
+            const tr = document.createElement('tr');
+            const td1 = document.createElement('td');
+            const imageElement = document.createElement('img');
+            imageElement.setAttribute("id", "company_image");
+            imageElement.src = img;
+            td1.appendChild(imageElement);
+            const td2 = document.createElement('td');
+            const name_info = document.createElement('h1');
+            name_info.textContent = name;
+            td2.appendChild(name_info);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            table.appendChild(tr);
+            basic_info.appendChild(table);
+        }
+        document.addEventListener('DOMContentLoaded', main_info);
     </script>
     <style>
-        #company_image{
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #basic_info {
+            margin-bottom: 20px;
+        }
+
+        #company_image {
             max-width: 200px;
             max-height: 200px;
-            margin-right: 20px;
-            
-            
+            border-radius: 8px;
         }
-        #table{
+
+        #table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: fit-content;
+        }
+
+        #table tr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #table td {
+            padding: 10px;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        .section-button {
+            background-color: #002d72; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .section-button:hover {
+            background-color: #001a4d; 
+            transform: scale(1.05);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .info-section {
             margin-top: 20px;
-            margin-left: 50px;
         }
-        .section-button{
-            background-color: antiquewhite;
-            font-size: medium;
-            margin-left: 5px;
+
+        .news-result {
+            border-top: 1px solid #444; 
+            border-bottom: 1px solid #444; 
+            padding: 15px;
+            margin: 10px 0;
         }
-        .container{
-            margin-left: 50px;
-            
-            
+
+        .news-title {
+            font-size: 1.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        .news-title a {
+            color:rgb(29, 29, 164); 
+            text-decoration: none;
+        }
+
+        .news-title a:hover {
+            text-decoration: underline; 
+        }
+
+        .news-description {
+            font-size: 1rem; 
+            margin-top: 5px;
+            color: #ddd; 
+        }
+
+
+        @media (max-width: 768px) {
+            #company_image {
+                max-width: 150px;
+                max-height: 150px;
+            }
+
+            .section-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
         }
     </style>
-
 </head>
 <body>
     <div class="mainbody">
-    <div id="basic_info">
-        </table>
-        
+        <div id="basic_info"></div>
+        <div class="container">
+            <div class="button-row">
+                <button class="section-button" onclick="googleSearch()">News</button>
+                <button class="section-button" onclick="info()">About Company</button>
+                <button class="section-button" onclick="googleSearch_founder()">Founders</button>
+                <button class="section-button" onclick="googleSearch_founder()">Others</button>
+            </div>
+            <div id="info-section" class="info-section"></div>
+        </div>
     </div>
-    <div class="container">
-        <button class="section-button" onclick="googleSearch()">News</Details></button>
-        <button class="section-button" onclick="info()">About company</button>
-        <button class="section-button" onclick="googleSearch_founder()">founders</button>
-        <button class="section-button" onclick="googleSearch_founder()">others</button>
-        <div id="info-section" class="info-section"></div>
-    </div>
-</div>
-    
+</body>
+</html>
